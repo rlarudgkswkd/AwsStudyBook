@@ -3,16 +3,16 @@ package domain.posts;
 import com.jojoldu.book.springboot.Application;
 import com.jojoldu.book.springboot.domain.posts.Posts;
 import com.jojoldu.book.springboot.domain.posts.PostsRepository;
-import org.junit.After;
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.context.junit4.SpringRunner;
+import org.springframework.test.context.junit.jupiter.SpringExtension;
 import java.util.List;
 import static org.assertj.core.api.Assertions.assertThat;
 
-@RunWith(SpringRunner.class)
+@ExtendWith(SpringExtension.class)
 //@SpringBootTest
 @SpringBootTest(classes= Application.class)
 public class PostsRepositoryTest {
@@ -20,7 +20,7 @@ public class PostsRepositoryTest {
     @Autowired
     PostsRepository postsRepository;
 
-    @After //Junit 에서 단위 테스트가 끝날 때마다 수행되는 메소드를 지정, 다음 실행할때 데이터가 남으면 실패할수도 있어서 지우는것.
+    @AfterEach //Junit 에서 단위 테스트가 끝날 때마다 수행되는 메소드를 지정, 다음 실행할때 데이터가 남으면 실패할수도 있어서 지우는것.
     public void cleanup() {
         postsRepository.deleteAll();
 

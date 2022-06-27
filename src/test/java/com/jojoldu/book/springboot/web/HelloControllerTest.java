@@ -2,18 +2,16 @@ package com.jojoldu.book.springboot.web;
 
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
-import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
-import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 
 import static org.hamcrest.Matchers.is;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
-//@ExtendWith(SpringRunner.class)
+//@ExtendWith(SpringExtension.class)
 //테스트 진행시 JUnit 내장된 실행자 외에 다른 실행자를 실행. 스프링 부트 테스트와 JUnit사이에 연결자 역할을 함.
 
 //@WebMvcTest(controllers = HelloController.class)
@@ -22,7 +20,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 //단 @Service, @Component, @Repository 등은 사용x
 //여기서는 컨트롤러만 사용하기에 선언하였음
 @ExtendWith(SpringExtension.class)
-//@RunWith(SpringRunner.class)
+//@ExtendWith(SpringExtension.class)
 @WebMvcTest
 //@WebMvcTest(controllers = HelloController.class)
 public class HelloControllerTest {
