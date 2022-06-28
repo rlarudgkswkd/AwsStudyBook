@@ -87,7 +87,6 @@ public class PostsApiControllerTest {
 
         String url = "http://localhost:"+port+"/api/v1/posts/"+updateId;
 
-
         HttpEntity<PostsUpdateRequestDto> requestEntity = new
                 HttpEntity<>(requestDto);
 
@@ -99,9 +98,7 @@ public class PostsApiControllerTest {
         assertThat(responseEntity.getBody()).isGreaterThan(0L);
 
         List<Posts> all = postsRepository.findAll();
-        System.out.println("여기");
         assertThat(all.get(0).getTitle()).isEqualTo(expectedTitle);
         assertThat(all.get(0).getContent()).isEqualTo(expectedContent);
     }
-
 }

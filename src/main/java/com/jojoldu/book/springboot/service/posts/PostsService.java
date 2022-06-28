@@ -25,6 +25,9 @@ public class PostsService {
         Posts posts = postsRepository.findById(id)
                 .orElseThrow(() ->
                         new IllegalArgumentException("해당 게시글이 없습니다, id="+id));
+
+        //여기 빼먹어서 당연히 update 없던것이였음. 이슈 해결 2022-06-28
+        posts.update(requestDto.getTitle(), requestDto.getContent());
         return id;
     }
 
