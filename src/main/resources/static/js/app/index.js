@@ -12,6 +12,7 @@ var main = {
             content : $('#content').val()
         };
 
+        //data 변수에 key:value 값들을 입력하여 그것을 json 형태로 만든 뒤 url로 전송하는 api
         $.ajax({
             type : 'POST',
             url : '/api/vi/posts',
