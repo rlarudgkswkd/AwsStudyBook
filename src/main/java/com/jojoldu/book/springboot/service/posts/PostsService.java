@@ -9,7 +9,7 @@ import com.jojoldu.book.springboot.web.dto.PostsUpdateRequestDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
-import javax.transaction.Transactional;
+import org.springframework.transaction.annotation.Transactional;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -37,15 +37,24 @@ public class PostsService {
     public PostsResponseDto findById(Long id){
         Posts entity = postsRepository.findById(id)
                 .orElseThrow(()
-                -> new IllegalArgumentException("해당 게시글이 s없습니다. id="+id));
+                        -> new IllegalArgumentException("해당 게시글이 s없습니다. id="+id));
+
         return new PostsResponseDto(entity);
     }
 
-    @Transactional
+    @Transactional(readOnly = true)
     public List<PostsListResponseDto> findAllDesc() {
         return postsRepository.findAllDesc().stream()
                 .map(PostsListResponseDto::new)
                 .collect(Collectors.toList());
     }
 
+    @Transactional
+    public void delete(Long id) {
+        Posts posts = postsRepository.deleteById(id)
+                .orElseThrow(()
+                        -> new IllegalArgumentException("해당 게시글이 s없습니다. id="+id));
+
+        postsRepository.delete(posts);
+    }
 }
