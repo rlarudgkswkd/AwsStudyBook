@@ -63,7 +63,7 @@ var main = {
 
         $.ajax({
             type    : 'DELETE',
-            url     : '/api/v1/posts/delete'+id,
+            url     : '/api/v1/posts/delete/'+id,
             dataType: 'json',
             contentType : 'application/json; charset=utf-8',
             //data    : JSON.stringify(data)
